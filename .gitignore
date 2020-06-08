@@ -82,3 +82,8 @@ atlassian-ide-plugin.xml
 # End of https://www.toptal.com/developers/gitignore/api/macos,phpstorm,cakephp
 
 .env
+/Plugin/DebugKit/
+
+app/Plugin/DebugKit/
+
+app/Vendor/
