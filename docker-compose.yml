@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "4000:80"
+    depends_on:
+      - db
+    volumes:
+    - .:/var/www/html
+    environment:
+      - SECURITY_SALT=${SECURITY_SALT}
+      - MYSQL_URL=${DB_HOST}
+      - MYSQL_USERNAME=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+
+  db:
+    image: mysql:5.6
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASS}
+      - MYSQL_DATABASE=${DB_DATABASE}
+
+volumes:
+  mysql_data:
