@@ -27,6 +27,11 @@
 					'Edit',
 					array('controller' => 'posts', 'action' => 'edit', $post['Post']['id'])
 				); ?>
+				<?= $this->Form->postLink(
+						'Delete',
+						array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']),
+						array('confirm' => 'Are you sure you wish to delete this post?')
+				); ?>
 			</td>
 			<td><?= $post['Post']['created']; ?></td>
 		</tr>

@@ -57,4 +57,18 @@ class PostsController extends AppController
 		}
 	}
 
+	public function delete($id = null) {
+		if ($this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+
+		if ($this->Post->delete($id)) {
+			$this->Flash->success(__('The post with id: %s has been deleted.', h($id)));
+		} else {
+			$this->Flash->error(__('We could not delete post with id %s', h($id)));
+		}
+
+		return $this->redirect(array('action' => 'index'));
+	}
+
 }
